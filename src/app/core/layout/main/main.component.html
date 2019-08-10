@@ -1,1 +1,18 @@
-<p>main works!</p>
+<!-- header includes logo, titles, and actions -->
+<app-header (toggleSidebar)="sidenav.toggle()"></app-header>
+<!-- End header -->
+
+
+<mat-sidenav-container>
+    <!-- Collapsible side content -->
+    <mat-sidenav  mode="side" opened [disableClose]="true" #sidenav role="navigation">
+        <app-sidenav></app-sidenav>
+    </mat-sidenav>
+    <!-- End Collapsible side content -->
+
+    <!-- Main Content Area -->
+    <mat-sidenav-content class="main-content">
+            <router-outlet></router-outlet>
+    </mat-sidenav-content>
+    <!-- End Main Content Area -->
+</mat-sidenav-container>

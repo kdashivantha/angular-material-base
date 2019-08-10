@@ -1,1 +1,14 @@
-<p>header works!</p>
+<mat-toolbar  color="primary"  class="fixed-header mat-elevation-z6">
+    <mat-toolbar-row>
+        <span>LOGO</span>
+        <div>
+            <button mat-icon-button (click)="toggleSidenav()">
+             <mat-icon>menu</mat-icon>
+           </button>
+        </div>
+
+        <a  mat-button  routerLink="/customer-list"  routerLinkActive="active">Customers</a>
+        <a  mat-button  routerLink="/customer-create">Create Customer</a>
+        <a  mat-button  routerLink="/login">Login</a>
+    </mat-toolbar-row>
+</mat-toolbar>
