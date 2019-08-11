@@ -3,9 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import { MainComponent } from './core/layout/main/main.component';
 
 const routes: Routes = [
-  { path: '', component: MainComponent}
+  { 
+    path: '', 
+    component: MainComponent,
+    loadChildren: () => import('./features/features.module').then(m => m.FeaturesModule) 
+  },
+  { 
+    path: '**', 
+    redirectTo: '' 
+  },
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
