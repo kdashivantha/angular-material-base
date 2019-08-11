@@ -1,0 +1,14 @@
+.mat-toolbar--transparent{
+    background-color:transparent;
+}
+
+.list-view{
+    margin:10px;
+    padding:15px;
+    background-color: #fff;
+    height:calc(100% - (120px));
+
+    table{
+        width:100%;
+    }
+}

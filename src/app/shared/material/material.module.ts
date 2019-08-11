@@ -16,6 +16,7 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTreeModule } from '@angular/material/tree';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatStepperModule,
         MatTableModule,
         MatToolbarModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatTreeModule
     ],
     declarations: [ ],
     exports:[ 
@@ -53,7 +55,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
         MatStepperModule,
         MatTableModule,
         MatToolbarModule,
-        MatTooltipModule
+        MatTooltipModule,
+        MatTreeModule
     ]
 })
 

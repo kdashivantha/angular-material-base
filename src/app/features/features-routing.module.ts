@@ -4,6 +4,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
     { 
+        path: 'students',
+        loadChildren: () => import('./students/students.module').then(m => m.StudentsModule)
+    },
+    { 
         path: '', 
         children:[
             //add dashboard route here

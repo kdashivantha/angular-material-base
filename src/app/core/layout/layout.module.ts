@@ -6,7 +6,7 @@ import { HeaderComponent } from './header/header.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { MaterialModule } from 'src/app/shared/material/material.module';
 import { RouterModule } from '@angular/router';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   declarations: [AuthComponent, MainComponent, HeaderComponent, SidenavComponent],
@@ -14,7 +14,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CommonModule,
     MaterialModule,
     RouterModule,
-    FlexLayoutModule
+    SharedModule
   ],
   exports: [
     MainComponent
