@@ -1,0 +1,122 @@
+<mat-toolbar class="mat-toolbar--transparent">
+  <mat-toolbar-row>
+      <span>Students | </span>
+      <span class="mat-body">Manage Students</span>
+      <div fxFlex fxLayout fxLayoutAlign="flex-end">
+          <button mat-raised-button color="primary">
+              <mat-icon>add</mat-icon>
+               Register New Student
+          </button>
+       </div>
+      
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<div class="list-view mat-elevation-z2" fxLayout="column">
+  <div class="filter">
+    <form>
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="Search" value="">
+            </mat-form-field>
+    </form>
+  </div>
+  <div class="data-table" fxLayout="column">
+    <div class="mat-table-loading-shade"
+      *ngIf="isLoadingResults">
+      <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+
+    <div class="scroll-container">
+      <table mat-table 
+      [dataSource]="dataSource" 
+      matSort 
+      matSortActive="id" 
+      matSortDirection="asc" 
+      matSortDisableClear
+      > 
+
+          <!-- Id Column -->
+          <ng-container matColumnDef="id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>ID</th>
+              <td mat-cell *matCellDef="let student">{{ student.id }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="fullName">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+              <td mat-cell *matCellDef="let student">{{ student.fullName }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="email">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+              <td mat-cell *matCellDef="let student">{{ student.email }}</td>
+          </ng-container>
+
+          <!-- Gender Type Column -->
+          <ng-container matColumnDef="gender">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Gender</th>
+              <td mat-cell *matCellDef="let student">{{ student.gender }}</td>
+          </ng-container>
+
+          <!-- Phone Number Column -->
+          <ng-container matColumnDef="phoneNumber">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Phone Number</th>
+              <td mat-cell *matCellDef="let student">{{ student.phoneNumber }}</td>
+          </ng-container>
+          <!-- School Column -->
+          <ng-container matColumnDef="school">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>School</th>
+              <td mat-cell *matCellDef="let student">{{ student.school }}</td>
+          </ng-container>
+
+          <!-- Address Column -->
+          <ng-container matColumnDef="address">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Address</th>
+              <td mat-cell *matCellDef="let student">{{ student.address }}</td>
+          </ng-container>
+
+          <!-- Guardian Column -->
+          <ng-container matColumnDef="guardian">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Guardian</th>
+              <td mat-cell *matCellDef="let student">{{ student.guardianName }}</td>
+          </ng-container>
+          <!-- guardianPhoneNumber Column -->
+          <ng-container matColumnDef="guardianPhoneNumber">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header>Guardian PhoneNumber</th>
+              <td mat-cell *matCellDef="let student">{{ student.guardianPhoneNumber }}</td>
+          </ng-container>
+      
+        <ng-container matColumnDef="details">
+          <th mat-header-cell *matHeaderCellDef> View </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button color="primary" (click)="redirectToDetails(element.id)">
+                <mat-icon class="mat-18">reorder</mat-icon>
+            </button>
+          </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="update">
+            <th mat-header-cell *matHeaderCellDef> Update </th>
+            <td mat-cell *matCellDef="let element">
+              <button mat-icon-button color="accent" (click)="redirectToUpdate(element.id)">
+                  <mat-icon class="mat-18">system_update</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+      
+          <ng-container matColumnDef="delete">
+              <th mat-header-cell *matHeaderCellDef> Delete </th>
+              <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="warn" (click)="redirectToDelete(element.id)">
+                    <mat-icon class="mat-18">delete</mat-icon>
+                </button>
+              </td>
+            </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <mat-paginator class="mat-paginator-sticky" [length]="resultsLength" [pageSizeOptions]="[25, 30, 50]"></mat-paginator>
+  </div>
+</div>
