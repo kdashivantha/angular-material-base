@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { SettingPageComponent } from './setting-page/setting-page.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+      path:'',
+      component: SettingPageComponent
+  }
+];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

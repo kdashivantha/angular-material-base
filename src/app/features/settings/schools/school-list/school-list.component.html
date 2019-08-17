@@ -1,0 +1,41 @@
+<div class="list-view mat-elevation-z2" fxLayout="column">
+
+        <div class="data-table" fxLayout="column">
+          <div class="mat-table-loading-shade"
+            *ngIf="isLoadingResults">
+            <mat-spinner></mat-spinner>
+          </div>
+      
+          <div class="scroll-container">
+            <table mat-table 
+            [dataSource]="dataSource" 
+            matSort 
+            matSortActive="id" 
+            matSortDirection="asc" 
+            matSortDisableClear
+            > 
+      
+                <!-- Id Column -->
+                <ng-container matColumnDef="id">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header disableClear>ID</th>
+                    <td mat-cell *matCellDef="let item">{{ item.id }}</td>
+                </ng-container>
+      
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+                    <td mat-cell *matCellDef="let item">{{ item.name }}</td>
+                </ng-container>
+      
+                <ng-container matColumnDef="district">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header>District</th>
+                    <td mat-cell *matCellDef="let item">{{ item.district }}</td>
+                </ng-container>
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </div>
+          <mat-paginator class="mat-paginator-sticky" [length]="resultsLength" [pageSizeOptions]="[25, 30, 50]"></mat-paginator>
+        </div>
+      </div>

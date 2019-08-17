@@ -1,1 +1,21 @@
-<p>student-detail works!</p>
+<mat-toolbar class="mat-toolbar--transparent">
+        <mat-toolbar-row>
+            <span>Student | </span>
+            <span class="mat-body">Student Name here</span>
+            <div fxFlex fxLayout fxLayoutAlign="flex-end">
+                <button mat-raised-button color="primary">
+                    <mat-icon>add</mat-icon>
+                     Actions
+                </button>
+             </div>
+        </mat-toolbar-row>
+</mat-toolbar>
+<div class="detail-view">
+            <mat-tab-group>
+                <mat-tab label="Profile"> Profile </mat-tab>
+                <mat-tab label="Admission"> Admission </mat-tab>
+                <mat-tab label="Class Subscriptions"> Class Subscription </mat-tab>
+                <mat-tab label="Attendance Reports"> Attendance </mat-tab>
+                <mat-tab label="Invoices"> Invoices </mat-tab>
+            </mat-tab-group>
+</div>

@@ -17,7 +17,9 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule } from '@angular/material/tree';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTabsModule } from '@angular/material/tabs';
+
 @NgModule({
     imports: [
         MatButtonModule,
@@ -37,7 +39,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatToolbarModule,
         MatTooltipModule,
         MatTreeModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTabsModule
     ],
     declarations: [ ],
     exports:[ 
@@ -58,7 +61,8 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
         MatToolbarModule,
         MatTooltipModule,
         MatTreeModule,
-        MatProgressSpinnerModule
+        MatProgressSpinnerModule,
+        MatTabsModule
     ]
 })
 

@@ -1,33 +1,33 @@
-import { StudentService } from './../student.service';
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { Student } from '../student.model';
+import { SchoolService } from './../school.service';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { School } from '../school.model';
+import { Router } from '@angular/router';
 import { merge, of } from 'rxjs';
 import { startWith, switchMap, map, catchError, delay } from 'rxjs/operators';
 import { SearchConfig } from 'src/app/core/models/search.model';
-import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-student-list',
-  templateUrl: './student-list.component.html',
-  styleUrls: ['./student-list.component.scss']
+  selector: 'app-school-list',
+  templateUrl: './school-list.component.html',
+  styleUrls: ['./school-list.component.scss']
 })
-export class StudentListComponent implements OnInit, AfterViewInit {
+export class SchoolListComponent implements OnInit, AfterViewInit {
 
-  public displayedColumns = ['id', 'fullName', 'email','gender', 'phoneNumber','school','address', 'details', 'delete'];
-  public dataSource = new MatTableDataSource<Student>();
+  public displayedColumns = ['id', 'name', 'district'];
+  public dataSource = new MatTableDataSource<School>();
 
-  resultsLength = 500;
-  public isLoadingResults = false;
+  resultsLength = 100;
+  isLoadingResults = false;
 
   @ViewChild(MatSort,{static:false}) sort: MatSort;
   @ViewChild(MatPaginator,{static:false}) paginator: MatPaginator;
   
   constructor(
     private router: Router,
-    private studentService: StudentService
+    private service: SchoolService
   ) { }
 
   ngOnInit() {
@@ -46,7 +46,7 @@ export class StudentListComponent implements OnInit, AfterViewInit {
         delay(0),
         switchMap(() => {
           this.isLoadingResults = true;
-          return this.studentService.query( <SearchConfig>{
+          return this.service.query( <SearchConfig>{
             _page: this.paginator.pageIndex + 1,
             _limit: this.paginator.pageSize,
             _sort: this.sort.active || "id",
@@ -64,12 +64,8 @@ export class StudentListComponent implements OnInit, AfterViewInit {
           this.isLoadingResults = false;
           return of([]);
         })
-      ).subscribe(data => this.dataSource.data = data as Student[]);
+      ).subscribe(data => this.dataSource.data = data as School[]);
 
   }
 
-
-  redirectToDetails(id:any){
-    this.router.navigate(['/students', id]);
-  }
 }

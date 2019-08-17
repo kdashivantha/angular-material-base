@@ -1,0 +1,18 @@
+<mat-toolbar class="mat-toolbar--transparent">
+    <mat-toolbar-row>
+        <span>Settings | </span>
+        <span class="mat-body">Settings Description</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+<div class="detail-view">
+        <mat-tab-group>
+            <mat-tab label="Subjects"> Subjcts </mat-tab>
+            <mat-tab label="Grades"> Grades </mat-tab>
+            <mat-tab label="Schools">
+                    <div class="fx-div" fxLayout="row" fxFlex>
+                            <div fxFlex ><app-school-list></app-school-list></div>
+                            <div fxFlex ><app-school-detail></app-school-detail></div>
+                    </div>
+            </mat-tab>
+        </mat-tab-group>
+</div>
